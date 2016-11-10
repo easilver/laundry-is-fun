@@ -9,6 +9,8 @@ Commit/comment when/how you naturally would and when you're finished submit a pu
 
 Any questions feel free to ping me
 
+p.s. please don't put the entire app logic in a single js file it will make me sad :(
+
 ## Description
 
 Everyone loves doing laundry. They love it so much they want to do it during their spare time on the world wide web. 
