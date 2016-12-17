@@ -11,6 +11,7 @@ class Washer extends React.Component {
         this.addSoap = this.addSoap.bind(this);
     }
 
+    //toggles if the washer is currently in use
     toggleInUse(){
         if(this.state.inUse == 'No') {
             this.setState({inUse: 'Yes'})
@@ -20,11 +21,10 @@ class Washer extends React.Component {
     }
 
     onWash(){
-        // alert("you are using " + this.state.clothes + " clothes and "
-        // + this.state.soap + " soap.");
         let soapNum = this.state.soap;
         let clothesNum = this.state.clothes;
 
+        //checks for invalid ammounts
         if(clothesNum == 0){
             alert("You didn't put in any clothes to wash!");
         }
@@ -32,20 +32,24 @@ class Washer extends React.Component {
             alert("You didn't use enough soap! You need 1 soap for 5 pieces of clothing.");
         }
         else {
+            //otherwise start wash
             this.toggleInUse();
             console.log("washer started");
             setTimeout(function() {
+                //end wash after 15 seconds
                 this.toggleInUse();
                 console.log("washer finished");
                 console.log("You washed " + this.state.clothes + " clothes, with " + this.state.soap + " soap.");
-            }.bind(this), 5000);
+            }.bind(this), 15000);
         }
     }
 
+    //sets new number of clothes when user chooses an amount
     addClothes (e) {
         this.setState({clothes: e.target.value});
     }
 
+    //sets new number of soap when user chooses an amount
     addSoap (e) {
         this.setState({soap: e.target.value});
     }
@@ -55,7 +59,7 @@ class Washer extends React.Component {
             <div className="content">
                 <div className="washing-machine"></div>
                 <div className="optioins">
-                    <p>Washer in use? {this.state.inUse}</p>
+                    <p>Washer currently in use? {this.state.inUse}</p>
                     Add Clothes
                     <select label="addedClothes" onChange={this.addClothes}>
                         <option value="0">Please Choose</option>
