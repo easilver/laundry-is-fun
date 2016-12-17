@@ -14,7 +14,7 @@ class Clothes extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="clothes">
                 Add Clothes
                 <select label="addedClothes" onChange={this.addClothes}>
                     <option value="0">Please Choose</option>

@@ -14,7 +14,7 @@ class Soap extends React.Component {
 
     render() {
         return (
-          <div>
+          <div className="soap">
               Add Soap
               <select label="addedSoap" onChange={this.addSoap}>
                   <option value="0">Please Choose</option>

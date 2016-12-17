@@ -1,18 +1,47 @@
-body {
-    /*background-color: pink;*/
-}
-
 * {
     font-family: Arial, SansSerif;
 }
 
 h1 {
     text-align: center;
-    /*background-color: green;*/
 }
 
 .washing-machine {
     background-image: url("/app/images/washing-machine.jpeg");
     background-repeat: no-repeat;
+    background-size: contain;
+    height: 200px;
+    width: 200px;
+    margin: auto;
+}
 
+.content > p {
+    text-align: center;
+}
+
+.options {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.options > button {
+    padding: 15px;
+}
+
+.soap {
+    padding: 10px;
+    background-color: deepskyblue;
+    /*float: left;*/
+}
+
+.clothes {
+    padding: 10px;
+    background-color: grey;
+    /*float: left;*/
+}
+
+.status-message {
+    margin-top: 25px;
+    text-align: center;
 }

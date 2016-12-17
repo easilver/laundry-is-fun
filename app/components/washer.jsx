@@ -6,7 +6,7 @@ class Washer extends React.Component {
 
     constructor(props){
         super(props);
-        this.state = {inUse: 'No', clothes: 0, soap: 0, likesCount:0};
+        this.state = {inUse: 'No', clothes: 0, soap: 0, likesCount:0, statusMessage: ''};
         this.onWash = this.onWash.bind(this);
         this.toggleInUse = this.toggleInUse.bind(this);
         this.updateClothes = this.updateClothes.bind(this);
@@ -28,20 +28,21 @@ class Washer extends React.Component {
 
         //checks for invalid ammounts
         if(clothesNum == 0){
-            alert("You didn't put in any clothes to wash!");
+            this.setState({statusMessage:"You didn't put in any clothes to wash!"});
         }
         else if((soapNum == 0) || (clothesNum/soapNum > 5)){
-            alert("You didn't use enough soap! You need 1 soap for 5 pieces of clothing.");
+            this.setState({statusMessage: "You didn't use enough soap! You need 1 soap for 5 pieces of clothing."});
         }
         else {
             //otherwise start wash
             this.toggleInUse();
-            console.log("washer started");
+            this.setState({statusMessage:"Washing... "});
             setTimeout(function() {
                 //end wash after 15 seconds
                 this.toggleInUse();
-                console.log("washer finished");
-                console.log("You washed " + this.state.clothes + " clothes, with " + this.state.soap + " soap.");
+                this.setState({statusMessage: "You washed " +
+                this.state.clothes + " clothes, with "
+                + this.state.soap + " soap."});
             }.bind(this), 15000);
         }
     }
@@ -60,12 +61,13 @@ class Washer extends React.Component {
         return (
             <div className="content">
                 <div className="washing-machine"></div>
-                <div className="optioins">
-                    <p>Washer currently in use? {this.state.inUse}</p>
+                <p>Washer currently in use? {this.state.inUse}</p>
+                <div className="options">
                     <Clothes onChange ={this.updateClothes}/>
                     <Soap onChange ={this.updateSoap}/>
-                    <div><button onClick={this.onWash}>Start Washer</button></div>
+                    <button onClick={this.onWash}>Start Washer</button>
                 </div>
+                <div className="status-message">{this.state.statusMessage}</div>
             </div>
         )
     }
