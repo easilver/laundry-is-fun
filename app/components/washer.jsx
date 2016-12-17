@@ -1,4 +1,6 @@
 import React from 'react';
+import Soap from './soap.jsx';
+import Clothes from './clothes.jsx';
 
 class Washer extends React.Component {
 
@@ -7,8 +9,8 @@ class Washer extends React.Component {
         this.state = {inUse: 'No', clothes: 0, soap: 0, likesCount:0};
         this.onWash = this.onWash.bind(this);
         this.toggleInUse = this.toggleInUse.bind(this);
-        this.addClothes = this.addClothes.bind(this);
-        this.addSoap = this.addSoap.bind(this);
+        this.updateClothes = this.updateClothes.bind(this);
+        this.updateSoap = this.updateSoap.bind(this);
     }
 
     //toggles if the washer is currently in use
@@ -45,13 +47,13 @@ class Washer extends React.Component {
     }
 
     //sets new number of clothes when user chooses an amount
-    addClothes (e) {
-        this.setState({clothes: e.target.value});
+    updateClothes (e) {
+        this.setState({clothes: e});
     }
 
     //sets new number of soap when user chooses an amount
-    addSoap (e) {
-        this.setState({soap: e.target.value});
+    updateSoap (e) {
+        this.setState({soap: e});
     }
 
     render() {
@@ -60,29 +62,8 @@ class Washer extends React.Component {
                 <div className="washing-machine"></div>
                 <div className="optioins">
                     <p>Washer currently in use? {this.state.inUse}</p>
-                    Add Clothes
-                    <select label="addedClothes" onChange={this.addClothes}>
-                        <option value="0">Please Choose</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                    </select>
-                    Add Soap
-                    <select label="addedSoap" onChange={this.addSoap}>
-                        <option value="0">Please Choose</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                    </select>
+                    <Clothes onChange ={this.updateClothes}/>
+                    <Soap onChange ={this.updateSoap}/>
                     <div><button onClick={this.onWash}>Start Washer</button></div>
                 </div>
             </div>

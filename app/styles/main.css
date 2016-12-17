@@ -1,0 +1,18 @@
+body {
+    /*background-color: pink;*/
+}
+
+* {
+    font-family: Arial, SansSerif;
+}
+
+h1 {
+    text-align: center;
+    /*background-color: green;*/
+}
+
+.washing-machine {
+    background-image: url("/app/images/washing-machine.jpeg");
+    background-repeat: no-repeat;
+
+}

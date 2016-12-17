@@ -81,7 +81,16 @@
 	    _createClass(App, [{
 	        key: 'render',
 	        value: function render() {
-	            return _react2.default.createElement(_washer2.default, null);
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(
+	                    'h1',
+	                    null,
+	                    'Laundry is Fun!'
+	                ),
+	                _react2.default.createElement(_washer2.default, null)
+	            );
 	        }
 	    }]);
 	
@@ -22047,6 +22056,14 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _soap = __webpack_require__(/*! ./soap.jsx */ 179);
+	
+	var _soap2 = _interopRequireDefault(_soap);
+	
+	var _clothes = __webpack_require__(/*! ./clothes.jsx */ 180);
+	
+	var _clothes2 = _interopRequireDefault(_clothes);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -22066,10 +22083,13 @@
 	        _this.state = { inUse: 'No', clothes: 0, soap: 0, likesCount: 0 };
 	        _this.onWash = _this.onWash.bind(_this);
 	        _this.toggleInUse = _this.toggleInUse.bind(_this);
-	        _this.addClothes = _this.addClothes.bind(_this);
-	        _this.addSoap = _this.addSoap.bind(_this);
+	        _this.updateClothes = _this.updateClothes.bind(_this);
+	        _this.updateSoap = _this.updateSoap.bind(_this);
 	        return _this;
 	    }
+	
+	    //toggles if the washer is currently in use
+	
 	
 	    _createClass(Washer, [{
 	        key: 'toggleInUse',
@@ -22083,34 +22103,41 @@
 	    }, {
 	        key: 'onWash',
 	        value: function onWash() {
-	            // alert("you are using " + this.state.clothes + " clothes and "
-	            // + this.state.soap + " soap.");
 	            var soapNum = this.state.soap;
 	            var clothesNum = this.state.clothes;
 	
+	            //checks for invalid ammounts
 	            if (clothesNum == 0) {
 	                alert("You didn't put in any clothes to wash!");
 	            } else if (soapNum == 0 || clothesNum / soapNum > 5) {
 	                alert("You didn't use enough soap! You need 1 soap for 5 pieces of clothing.");
 	            } else {
+	                //otherwise start wash
 	                this.toggleInUse();
 	                console.log("washer started");
 	                setTimeout(function () {
+	                    //end wash after 15 seconds
 	                    this.toggleInUse();
 	                    console.log("washer finished");
 	                    console.log("You washed " + this.state.clothes + " clothes, with " + this.state.soap + " soap.");
-	                }.bind(this), 5000);
+	                }.bind(this), 15000);
 	            }
 	        }
+	
+	        //sets new number of clothes when user chooses an amount
+	
 	    }, {
-	        key: 'addClothes',
-	        value: function addClothes(e) {
-	            this.setState({ clothes: e.target.value });
+	        key: 'updateClothes',
+	        value: function updateClothes(e) {
+	            this.setState({ clothes: e });
 	        }
+	
+	        //sets new number of soap when user chooses an amount
+	
 	    }, {
-	        key: 'addSoap',
-	        value: function addSoap(e) {
-	            this.setState({ soap: e.target.value });
+	        key: 'updateSoap',
+	        value: function updateSoap(e) {
+	            this.setState({ soap: e });
 	        }
 	    }, {
 	        key: 'render',
@@ -22125,104 +22152,11 @@
 	                    _react2.default.createElement(
 	                        'p',
 	                        null,
-	                        'Washer in use? ',
+	                        'Washer currently in use? ',
 	                        this.state.inUse
 	                    ),
-	                    'Add Clothes',
-	                    _react2.default.createElement(
-	                        'select',
-	                        { label: 'addedClothes', onChange: this.addClothes },
-	                        _react2.default.createElement(
-	                            'option',
-	                            { value: '0' },
-	                            'Please Choose'
-	                        ),
-	                        _react2.default.createElement(
-	                            'option',
-	                            { value: '1' },
-	                            '1'
-	                        ),
-	                        _react2.default.createElement(
-	                            'option',
-	                            { value: '2' },
-	                            '2'
-	                        ),
-	                        _react2.default.createElement(
-	                            'option',
-	                            { value: '3' },
-	                            '3'
-	                        ),
-	                        _react2.default.createElement(
-	                            'option',
-	                            { value: '4' },
-	                            '4'
-	                        ),
-	                        _react2.default.createElement(
-	                            'option',
-	                            { value: '5' },
-	                            '5'
-	                        ),
-	                        _react2.default.createElement(
-	                            'option',
-	                            { value: '6' },
-	                            '6'
-	                        ),
-	                        _react2.default.createElement(
-	                            'option',
-	                            { value: '7' },
-	                            '7'
-	                        ),
-	                        _react2.default.createElement(
-	                            'option',
-	                            { value: '8' },
-	                            '8'
-	                        ),
-	                        _react2.default.createElement(
-	                            'option',
-	                            { value: '9' },
-	                            '9'
-	                        ),
-	                        _react2.default.createElement(
-	                            'option',
-	                            { value: '10' },
-	                            '10'
-	                        ),
-	                        _react2.default.createElement(
-	                            'option',
-	                            { value: '11' },
-	                            '11'
-	                        ),
-	                        _react2.default.createElement(
-	                            'option',
-	                            { value: '12' },
-	                            '12'
-	                        )
-	                    ),
-	                    'Add Soap',
-	                    _react2.default.createElement(
-	                        'select',
-	                        { label: 'addedSoap', onChange: this.addSoap },
-	                        _react2.default.createElement(
-	                            'option',
-	                            { value: '0' },
-	                            'Please Choose'
-	                        ),
-	                        _react2.default.createElement(
-	                            'option',
-	                            { value: '1' },
-	                            '1'
-	                        ),
-	                        _react2.default.createElement(
-	                            'option',
-	                            { value: '2' },
-	                            '2'
-	                        ),
-	                        _react2.default.createElement(
-	                            'option',
-	                            { value: '3' },
-	                            '3'
-	                        )
-	                    ),
+	                    _react2.default.createElement(_clothes2.default, { onChange: this.updateClothes }),
+	                    _react2.default.createElement(_soap2.default, { onChange: this.updateSoap }),
 	                    _react2.default.createElement(
 	                        'div',
 	                        null,
@@ -22241,6 +22175,225 @@
 	}(_react2.default.Component);
 	
 	exports.default = Washer;
+
+/***/ },
+/* 179 */
+/*!*********************************!*\
+  !*** ./app/components/soap.jsx ***!
+  \*********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Soap = function (_React$Component) {
+	    _inherits(Soap, _React$Component);
+	
+	    function Soap(props) {
+	        _classCallCheck(this, Soap);
+	
+	        var _this = _possibleConstructorReturn(this, (Soap.__proto__ || Object.getPrototypeOf(Soap)).call(this, props));
+	
+	        _this.addSoap = _this.addSoap.bind(_this);
+	        return _this;
+	    }
+	
+	    //sets new number of soap when user chooses an amount
+	
+	
+	    _createClass(Soap, [{
+	        key: "addSoap",
+	        value: function addSoap(e) {
+	            this.props.onChange(e.target.value);
+	        }
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            return _react2.default.createElement(
+	                "div",
+	                null,
+	                "Add Soap",
+	                _react2.default.createElement(
+	                    "select",
+	                    { label: "addedSoap", onChange: this.addSoap },
+	                    _react2.default.createElement(
+	                        "option",
+	                        { value: "0" },
+	                        "Please Choose"
+	                    ),
+	                    _react2.default.createElement(
+	                        "option",
+	                        { value: "1" },
+	                        "1"
+	                    ),
+	                    _react2.default.createElement(
+	                        "option",
+	                        { value: "2" },
+	                        "2"
+	                    ),
+	                    _react2.default.createElement(
+	                        "option",
+	                        { value: "3" },
+	                        "3"
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+	
+	    return Soap;
+	}(_react2.default.Component);
+	
+	exports.default = Soap;
+
+/***/ },
+/* 180 */
+/*!************************************!*\
+  !*** ./app/components/clothes.jsx ***!
+  \************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Clothes = function (_React$Component) {
+	    _inherits(Clothes, _React$Component);
+	
+	    function Clothes(props) {
+	        _classCallCheck(this, Clothes);
+	
+	        var _this = _possibleConstructorReturn(this, (Clothes.__proto__ || Object.getPrototypeOf(Clothes)).call(this, props));
+	
+	        _this.addClothes = _this.addClothes.bind(_this);
+	        return _this;
+	    }
+	
+	    //sets new number of soap when user chooses an amount
+	
+	
+	    _createClass(Clothes, [{
+	        key: "addClothes",
+	        value: function addClothes(e) {
+	            this.props.onChange(e.target.value);
+	        }
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            return _react2.default.createElement(
+	                "div",
+	                null,
+	                "Add Clothes",
+	                _react2.default.createElement(
+	                    "select",
+	                    { label: "addedClothes", onChange: this.addClothes },
+	                    _react2.default.createElement(
+	                        "option",
+	                        { value: "0" },
+	                        "Please Choose"
+	                    ),
+	                    _react2.default.createElement(
+	                        "option",
+	                        { value: "1" },
+	                        "1"
+	                    ),
+	                    _react2.default.createElement(
+	                        "option",
+	                        { value: "2" },
+	                        "2"
+	                    ),
+	                    _react2.default.createElement(
+	                        "option",
+	                        { value: "3" },
+	                        "3"
+	                    ),
+	                    _react2.default.createElement(
+	                        "option",
+	                        { value: "4" },
+	                        "4"
+	                    ),
+	                    _react2.default.createElement(
+	                        "option",
+	                        { value: "5" },
+	                        "5"
+	                    ),
+	                    _react2.default.createElement(
+	                        "option",
+	                        { value: "6" },
+	                        "6"
+	                    ),
+	                    _react2.default.createElement(
+	                        "option",
+	                        { value: "7" },
+	                        "7"
+	                    ),
+	                    _react2.default.createElement(
+	                        "option",
+	                        { value: "8" },
+	                        "8"
+	                    ),
+	                    _react2.default.createElement(
+	                        "option",
+	                        { value: "9" },
+	                        "9"
+	                    ),
+	                    _react2.default.createElement(
+	                        "option",
+	                        { value: "10" },
+	                        "10"
+	                    ),
+	                    _react2.default.createElement(
+	                        "option",
+	                        { value: "11" },
+	                        "11"
+	                    ),
+	                    _react2.default.createElement(
+	                        "option",
+	                        { value: "12" },
+	                        "12"
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+	
+	    return Clothes;
+	}(_react2.default.Component);
+	
+	exports.default = Clothes;
 
 /***/ }
 /******/ ]);
