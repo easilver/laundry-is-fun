@@ -1,0 +1,37 @@
+{
+  "name": "laundry-is-fun",
+  "version": "1.0.0",
+  "description": "I would like an SPA that matches the description below. Reading through the description should get you the ideas of what it supposed to accomplish. Some pieces may be ambiguous or even missing but I value your product/feature decisions (we're a team right?).",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack -d --watch",
+    "build": "webpack -p",
+    "start": "webpack-dev-server --inline --content-base ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/easilver/laundry-is-fun.git"
+  },
+  "author": "Erica Silver",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/easilver/laundry-is-fun/issues"
+  },
+  "homepage": "https://github.com/easilver/laundry-is-fun#readme",
+
+  "dependencies": {
+    "babel-core": "^6.18.2",
+    "babel-loader": "^6.2.7",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "css-loader": "^0.25.0",
+    "node-sass": "^3.11.2",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-router": "^3.0.0",
+    "sass-loader": "^4.0.2",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.3",
+    "webpack-dev-server": "^1.16.2"
+  }
+}
